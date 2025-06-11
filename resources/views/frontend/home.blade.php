@@ -67,7 +67,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 50, 0, 0.4);
+        background: rgba(0, 50, 0, 0.5);
         z-index: 1;
     }
 
@@ -78,8 +78,8 @@
         width: 90%;
         text-align: left;
         padding: 2rem;
-        margin: 0 auto;
-        transform: translateY(100px);
+        margin: 0 auto !important;
+        transform: translateY(-30px);
         opacity: 0;
         animation: fadeInUp 1s ease-out 0.5s forwards;
     }
@@ -106,38 +106,38 @@
         color: #e0e0e0;
         font-size: 1.1em;
         margin: 15px 0;
-        font-weight: 500;
+        font-weight: bold;
         font-family: 'Inter', sans-serif;
     }
 
     @keyframes fadeInUp {
         to {
             opacity: 1;
-            transform: translateY(120px);
+            transform: translateY(-10px);
         }
     }
 
     #rotating-text {
         overflow: hidden;
         position: relative;
-        min-height: 180px;
+        min-height: 180px !important;
         margin-bottom: 1.5rem;
     }
 
     .wave-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 12px !important;
         opacity: 0;
         transform: translateY(40px);
-        animation: containerFade 0.8s ease-out forwards;
-        margin-bottom: 15px;
+        animation: slideInLeft 0.8s ease-out forwards;
+        margin-bottom: 15px !important;
     }
 
     .flavor-description {
         color: #FFFFFF;
         font-size: 1.6rem;
-        font-weight: 300;
+        font-weight: bold;
         font-family: 'Plus Jakarta Sans', sans-serif;
         opacity: 0;
         transform: translateX(-20px);
@@ -152,17 +152,19 @@
         animation: popIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         color: #FFFFFF;
         transition: transform 0.2s ease;
-        white-space: nowrap; /* Prevent words from breaking */
+        white-space: nowrap;
     }
 
     .wave-word:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 
     /* Button styles */
     .hero-buttons {
         display: flex;
         gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
     .hero-btn {
@@ -172,6 +174,7 @@
         font-size: 1.2em;
         font-weight: bold;
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        text-align: center;
     }
 
     .hero-btn-primary {
@@ -186,6 +189,49 @@
         background: transparent;
         color: #FFFFFF;
         border: 2px solid #00C851;
+        margin-top: 30px;
+        padding: 18px 40px;
+        font-size: 1.3em;
+    }
+
+    /* CTA Button Style */
+    .hero-btn-cta {
+        position: absolute;
+        bottom: 90px;
+        right: 50px;
+        background: #FFFFFF;
+        color: #006400;
+        border: none;
+        padding: 22px 60px 22px 50px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.7em;
+        font-weight: bold;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+    }
+
+    .hero-btn-cta::after {
+        content: '→';
+        font-size: 0.9em;
+        margin-left: 10px;
+        color: #006400;
+        transition: transform 0.3s ease;
+    }
+
+    .hero-btn-cta:hover {
+        background: #F0F0F0;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 102, 0, 0.4);
+    }
+
+    .hero-btn-cta:hover::after {
+        transform: translateX(5px);
     }
 
     @keyframes popIn {
@@ -321,16 +367,27 @@
             font-size: 2.8em;
         }
         #rotating-text {
-            min-height: 160px;
+            min-height: 160px !important;
+        }
+        .hero-btn-cta {
+            padding: 18px 50px 18px 40px;
+            font-size: 1.4em;
+            min-width: 180px;
+        }
+        .hero-btn-secondary {
+            margin-top: 25px;
+            padding: 16px 35px;
+            font-size: 1.2em;
         }
     }
 
     @media (max-width: 768px) {
         .hero-section {
-            min-height: 80vh;
+            min-height: 100vh;
         }
         .hero-content {
-            transform: translateY(80px);
+            transform: translateY(-20px);
+            padding: 1.5rem;
         }
         .hero-main-title {
             font-size: 2.4em;
@@ -346,24 +403,42 @@
             font-size: 1em;
         }
         #rotating-text {
-            min-height: 140px;
+            min-height: 140px !important;
         }
         .wave-container {
-            gap: 10px;
+            gap: 10px !important;
         }
         .hero-btn {
             padding: 12px 25px;
             font-size: 1.1em;
         }
+        .hero-btn-secondary {
+            margin-top: 20px;
+            padding: 14px 30px;
+            font-size: 1.1em;
+        }
+        .hero-btn-cta {
+            padding: 16px 45px 16px 35px;
+            font-size: 1.3em;
+            bottom: 15px;
+            right: 15px;
+            min-width: 160px;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 
     @media (max-width: 576px) {
         .hero-section {
-            min-height: 70vh;
+            min-height: 100vh;
         }
         .hero-content {
             padding: 1.5rem;
-            transform: translateY(60px);
+            transform: translateY(-15px);
         }
         .hero-main-title {
             font-size: 2em;
@@ -377,102 +452,265 @@
         }
         .hero-description {
             font-size: 0.9em;
+            margin: 12px 0;
         }
         #rotating-text {
-            min-height: 120px;
+            min-height: 120px !important;
+        }
+        .wave-container {
+            gap: 8px !important;
+            flex-direction: column;
+            align-items: flex-start;
         }
         .hero-buttons {
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .hero-btn {
             width: 100%;
-            max-width: 250px;
+            max-width: 280px;
             padding: 10px 18px;
             font-size: 0.9em;
         }
+        .hero-btn-secondary {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 1em;
+            max-width: 300px;
+        }
+        .hero-btn-cta {
+            position: static;
+            width: 100%;
+            max-width: 300px;
+            padding: 14px 40px 14px 30px;
+            font-size: 1.2em;
+            margin-top: 12px;
+            min-width: 140px;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 
-    /* Special 480px adjustments */
     @media (max-width: 480px) {
-        .hero-content {
-            padding: 1.2rem;
-            transform: translateY(80px);
+        .hero-section {
+            min-height: 100vh;
+            padding: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero-main-title {
-            font-size: 1.8em;
-            line-height: 1.2;
+        .hero-content {
+            padding: 2rem 1rem; /* Reduced side padding to prevent overflow */
+            width: 100%;
+            max-width: 440px;
+            transform: translateY(0);
+            text-align: center;
+            margin: 0 auto;
+            overflow-wrap: break-word; /* Prevent text cutoff */
         }
         .hero-subtitle {
-            font-size: 0.95em;
-            margin-bottom: -8px;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-bottom: 0;
+            text-align: center;
+            font-weight: 600;
         }
-        .flavor-description {
-            font-size: 0.95rem;
-            line-height: 1.3;
+        .hero-main-title {
+            font-size: 2.2em;
+            line-height: 1.1;
+            text-align: center;
+            margin-bottom: 20px;
         }
         #rotating-text {
-            min-height: 110px;
+            min-height: 180px !important;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .wave-container {
-            gap: 8px;
-            flex-direction: column;
-            align-items: flex-start;
+            gap: 8px !important;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px !important;
+            padding: 0 15px; /* Added padding to prevent cutoff */
+            min-height: 80px;
+            display: flex;
         }
         .wave-word {
-            white-space: normal;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .hero-description {
-            font-size: 0.85em;
-            margin: 10px 0;
-        }
-        .hero-btn {
-            padding: 9px 16px;
-            font-size: 0.85em;
-        }
-    }
-
-    @media (max-width: 400px) {
-        .hero-main-title {
-            font-size: 2.7em;
-        }
-        .hero-subtitle {
-            font-size: 1.1rem;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
+            margin: 3px 5px;
+            font-size: 1.5em;
+            line-height: 1;
+            max-width: 100%;
+            overflow: visible;
         }
         .flavor-description {
-            font-size: 0.9rem;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin-top: 15px;
+            text-align: center;
+            padding: 0 20px; /* Increased padding to prevent cutoff */
+            max-width: 100%;
+            word-wrap: break-word;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #rotating-text {
-            min-height: 100px;
+        .hero-description {
+            font-size: 0.95em;
+            margin: 25px 0;
+            line-height: 1.5;
+            padding: 0 20px; /* Adjusted padding */
+            max-width: 100%;
+            text-align: center;
+        }
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            width: 100%;
+        }
+        .hero-btn {
+            width: 100%;
+            max-width: 320px;
+            padding: 16px 24px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            margin: 0;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-btn-secondary {
+            margin-top: 15px;
+            padding: 14px 30px;
+            font-size: 1.1em;
+            max-width: 320px;
+        }
+        .hero-btn-cta {
+            position: static;
+            width: 100%;
+            max-width: 320px;
+            padding: 16px 45px 16px 35px;
+            font-size: 1.2em;
+            margin-top: 10px;
+            border-radius: 30px;
+            min-height: 58px;
+            min-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Ensure proper text rendering */
+        .wave-word,
+        .flavor-description,
+        .hero-description {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Better animations for mobile */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Optimize particle effects */
+        .wave-particle {
+            width: 5px;
+            height: 5px;
+        }
+        /* Touch-friendly interactions */
+        .wave-word:hover {
+            transform: scale(1.05);
+        }
+        .hero-btn:active {
+            transform: scale(0.96);
+        }
+        .hero-btn-cta:active {
+            transform: scale(0.96);
+        }
+        /* Prevent text overflow */
+        * {
+            box-sizing: border-box;
+        }
+        .hero-content * {
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
     }
 
     @media (max-width: 320px) {
+        .hero-section {
+            min-height: 100vh;
+        }
         .hero-content {
             padding: 0.8rem;
-            transform: translateY(60px);
-        }
-        .hero-subtitle {
-            font-size: 0.8em;
+            width: 95%;
+            transform: translateY(-5px);
         }
         .hero-main-title {
             font-size: 1.5em;
         }
+        .hero-subtitle {
+            font-size: 0.8em;
+            padding-bottom: 5px;
+        }
         .flavor-description {
             font-size: 0.8rem;
+            padding: 0 15px;
+        }
+        #rotating-text {
+            min-height: 80px !important;
+        }
+        .wave-container {
+            gap: 4px !important;
+            padding: 0 10px;
+        }
+        .wave-word {
+            font-size: 1.4em;
+            margin-bottom: 4px;
         }
         .hero-description {
             font-size: 0.8em;
-        }
-        #rotating-text {
-            min-height: 90px;
+            padding: 0 15px;
         }
         .hero-btn {
+            max-width: 220px;
+            padding: 8px 12px;
             font-size: 0.8em;
-            padding: 8px 14px;
+        }
+        .hero-btn-secondary {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            max-width: 220px;
+        }
+        .hero-btn-cta {
+            max-width: 220px;
+            padding: 12px 30px 12px 20px;
+            font-size: 1em;
+            min-width: 120px;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     }
 </style>
@@ -497,14 +735,9 @@
             </div>
         </h1>
         <p class="hero-description">
-            From $5.00/month for all - EMI options available!
+            "Available in 420ml bottles – perfect for retail sales! We also take custom orders for events and parties."
         </p>
         <div class="hero-buttons">
-            <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="hero-btn hero-btn-primary"
-               onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0, 102, 0, 0.5)'"
-               onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(0, 102, 0, 0.4)'; this.style.animation='pulse 2s infinite'">
-                Details
-            </a>
             <a href="{{ url('/juices') }}" class="hero-btn hero-btn-secondary"
                onmouseover="this.style.background='#00C851'; this.style.color='#FFFFFF';"
                onmouseout="this.style.background='transparent'; this.style.color='#FFFFFF';">
@@ -512,6 +745,9 @@
             </a>
         </div>
     </div>
+    <a href="{{ url('/order') }}" class="hero-btn-cta">
+        Order
+    </a>
 </div>
 
 <script>
@@ -565,7 +801,7 @@
         const words = text.split(' ');
 
         words.forEach((word, i) => {
-            const wordElement = document.createElement('span');
+            const wordElement = document.createElement('div');
             wordElement.className = 'wave-word';
             wordElement.textContent = word + (i < words.length - 1 ? ' ' : '');
             wordElement.style.setProperty('--delay', `${i * 0.1}s`);
